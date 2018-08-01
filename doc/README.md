@@ -26,11 +26,7 @@ Drag MNPCOIN-Qt to your applications folder, and then run MNPCOIN-Qt.
 
 ### Need Help?
 
-* See the documentation at the [MNPCOIN Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
-for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [MNPCOIN Forum](http://forum.mnpcoin.com/).
-* Join our Discord server [Discord Server](https://discord.mnpcoin.com)
-* Join one of our Slack groups [MNPCOIN Slack Groups](https://mnpcoin.com/slack-logins/) (Main community is replaced by Discord).
+* Join our Discord server [Discord Server](https://discord.gg/9zXtypY)
 
 Building
 ---------------------
@@ -54,15 +50,9 @@ The MNPCoin repo's [root README](https://github.com/MNPCOIN-Project/MNPCOIN/blob
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Dnsseed Policy](dnsseed-policy.md)
 
-### Resources
-
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [MNPCOIN](http://forum.mnpcoin.com/) forum.
-* Join the [MNPCOIN-Dev](https://mnpcoin-dev.slack.com/) Slack group ([Sign-Up](https://mnpcoin-dev.herokuapp.com/)).
-
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
-- [Tor Support](tor.md)
 - [Init Scripts (systemd/upstart/openrc)](init.md)
 
 License
