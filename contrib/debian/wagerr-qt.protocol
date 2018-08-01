@@ -1,0 +1,11 @@
+[Protocol]
+exec=mnpcoin-qt '%u'
+protocol=mnpcoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

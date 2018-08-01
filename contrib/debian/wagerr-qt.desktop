@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=MNPCoin
+Comment=MNPCoin P2P Cryptocurrency
+Comment[fr]=MNPCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=MNPCoin, eşten eşe kriptografik sanal para birimi
+Exec=mnpcoin-qt %u
+Terminal=false
+Type=Application
+Icon=mnpcoin128
+MimeType=x-scheme-handler/mnpcoin;
+Categories=Office;Finance;

@@ -1,0 +1,26 @@
+# /etc/conf.d/mnpcoind: config file for /etc/init.d/mnpcoind
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/mnpcoin/mnpcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/mnpcoind"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/mnpcoind.pid"
+
+# Where to write mnpcoind data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/mnpcoind"
+
+# User and group to own mnpcoind process
+#BITCOIND_USER="mnpcoin"
+#BITCOIND_GROUP="mnpcoin"
+
+# Path to mnpcoind executable
+#BITCOIND_BIN="/usr/bin/mnpcoind"
+
+# Nice value to run mnpcoind under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

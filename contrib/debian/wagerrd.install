@@ -1,0 +1,2 @@
+usr/local/bin/mnpcoind usr/bin
+usr/local/bin/mnpcoin-cli usr/bin
