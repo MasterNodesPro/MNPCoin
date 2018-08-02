@@ -397,7 +397,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         this, SLOT(peerSelected(const QItemSelection &, const QItemSelection &)));
         // peer table signal handling - update peer details when new nodes are added to the model
         connect(model->getPeerTableModel(), SIGNAL(layoutChanged()), this, SLOT(peerLayoutChanged()));
-
+1
         // set up ban table
         ui->banlistWidget->setModel(model->getBanTableModel());
         ui->banlistWidget->verticalHeader()->hide();
