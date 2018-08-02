@@ -14,7 +14,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "zpivcontroldialog.h"
+#include "zmnpcontroldialog.h"
 #include "spork.h"
 #include "askpassphrasedialog.h"
 
