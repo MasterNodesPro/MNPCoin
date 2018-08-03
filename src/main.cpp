@@ -5716,7 +5716,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Each connection can only send one version message
         if (pfrom->nVersion != 0) {
             pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate version message"));
-            LogPrintf("%s: misbehaving peer: duplicate version REJECT_DUPLICATE. %s", __func__, strCommand);
+            LogPrint("%s: misbehaving peer: duplicate version REJECT_DUPLICATE. %s", __func__, strCommand);
             Misbehaving(pfrom->GetId(), 1);
             return false;
         }
@@ -5834,7 +5834,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     else if (pfrom->nVersion == 0) {
         // Must have a version message before anything else
-        LogPrintf("%s: misbehaving peer: Must have a version message before anything else", __func__);
+        LogPrint("%s: misbehaving peer: Must have a version message before anything else", __func__);
         Misbehaving(pfrom->GetId(), 1);
         return false;
     }
