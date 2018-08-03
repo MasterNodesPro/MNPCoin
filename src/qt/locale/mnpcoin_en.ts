@@ -5929,7 +5929,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
 <context>
     <name>ZMnpControlDialog</name>
     <message>
-        <location filename="../forms/zpivcontroldialog.ui" line="+20"/>
+        <location filename="../forms/zmnpcontroldialog.ui" line="+20"/>
         <source>Select zMnp to Spend</source>
         <translation type="unfinished"></translation>
     </message>

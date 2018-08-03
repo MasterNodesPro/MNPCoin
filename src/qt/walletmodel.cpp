@@ -568,9 +568,9 @@ static void NotifyZerocoinChanged(WalletModel* walletmodel, CWallet* wallet, con
                               Q_ARG(int, status));
 }
 
-static void NotifyxMNPReset(WalletModel* walletmodel)
+static void NotifyzMNPReset(WalletModel* walletmodel)
 {
-    qDebug() << "NotifyxMNPReset";
+    qDebug() << "NotifyzMNPReset";
     QMetaObject::invokeMethod(walletmodel, "checkBalanceChanged", Qt::QueuedConnection);
 }
 
@@ -584,7 +584,7 @@ void WalletModel::subscribeToCoreSignals()
     wallet->NotifyWatchonlyChanged.connect(boost::bind(NotifyWatchonlyChanged, this, _1));
     wallet->NotifyMultiSigChanged.connect(boost::bind(NotifyMultiSigChanged, this, _1));
     wallet->NotifyZerocoinChanged.connect(boost::bind(NotifyZerocoinChanged, this, _1, _2, _3, _4));
-    wallet->NotifyxMNPReset.connect(boost::bind(NotifyxMNPReset, this));
+    wallet->NotifyzMNPReset.connect(boost::bind(NotifyzMNPReset, this));
 }
 
 void WalletModel::unsubscribeFromCoreSignals()
@@ -597,7 +597,7 @@ void WalletModel::unsubscribeFromCoreSignals()
     wallet->NotifyWatchonlyChanged.disconnect(boost::bind(NotifyWatchonlyChanged, this, _1));
     wallet->NotifyMultiSigChanged.disconnect(boost::bind(NotifyMultiSigChanged, this, _1));
     wallet->NotifyZerocoinChanged.disconnect(boost::bind(NotifyZerocoinChanged, this, _1, _2, _3, _4));
-    wallet->NotifyxMNPReset.disconnect(boost::bind(NotifyxMNPReset, this));
+    wallet->NotifyzMNPReset.disconnect(boost::bind(NotifyzMNPReset, this));
 }
 
 // WalletModel::UnlockContext implementation

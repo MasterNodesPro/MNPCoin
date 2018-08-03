@@ -166,11 +166,11 @@ void ZMnpControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelZPiv_int->setText(QString::number(nAmount));
+    ui->labelZMnp_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(listSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setZPivControlLabels(nAmount, listSelectedMints.size());
+    privacyDialog->setZMnpControlLabels(nAmount, listSelectedMints.size());
 }
 
 std::vector<CZerocoinMint> ZMnpControlDialog::GetSelectedMints()
