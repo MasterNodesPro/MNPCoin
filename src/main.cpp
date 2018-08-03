@@ -6468,11 +6468,11 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         CBloomFilter filter;
         vRecv >> filter;
 
-        if (!filter.IsWithinSizeConstraints())
+        if (!filter.IsWithinSizeConstraints()) {
             // There is no excuse for sending a too-large filter
             LogPrintf("%s %i: misbehaving peer: too large filter", __func__, __LINE__);
             Misbehaving(pfrom->GetId(), 100);
-        else {
+        } else {
             LOCK(pfrom->cs_filter);
             delete pfrom->pfilter;
             pfrom->pfilter = new CBloomFilter(filter);
