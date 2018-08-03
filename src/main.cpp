@@ -5716,6 +5716,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Each connection can only send one version message
         if (pfrom->nVersion != 0) {
             pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate version message"));
+            LogPrintf("%s: misbehaving peer: duplicate version REJECT_DUPLICATE. %s", __func__, strCommand);
             Misbehaving(pfrom->GetId(), 1);
             return false;
         }
@@ -5833,6 +5834,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     else if (pfrom->nVersion == 0) {
         // Must have a version message before anything else
+        LogPrintf("%s: misbehaving peer: Must have a version message before anything else", __func__);
         Misbehaving(pfrom->GetId(), 1);
         return false;
     }
@@ -5858,6 +5860,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             return true;
         if (vAddr.size() > 1000) {
             Misbehaving(pfrom->GetId(), 20);
+            LogPrintf("%s: misbehaving peer: message addr size() = %u", __func__, vAddr.size());
             return error("message addr size() = %u", vAddr.size());
         }
 
@@ -5916,6 +5919,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
             Misbehaving(pfrom->GetId(), 20);
+            LogPrintf("%s: misbehaving peer: message inv size() = %u", __func__, vInv.size());
             return error("message inv size() = %u", vInv.size());
         }
 
@@ -5950,6 +5954,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
             if (pfrom->nSendSize > (SendBufferSize() * 2)) {
                 Misbehaving(pfrom->GetId(), 50);
+                LogPrintf("%s: misbehaving peer: message buffer size() = %u", __func__, pfrom->nSendSize);
                 return error("send buffer size() = %u", pfrom->nSendSize);
             }
         }
@@ -5964,6 +5969,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
             Misbehaving(pfrom->GetId(), 20);
+            LogPrintf("%s: misbehaving peer: message getdata size() = %u", __func__, vInv.size());
             return error("message getdata size() = %u", vInv.size());
         }
 
@@ -6214,6 +6220,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         unsigned int nCount = ReadCompactSize(vRecv);
         if (nCount > MAX_HEADERS_RESULTS) {
             Misbehaving(pfrom->GetId(), 20);
+            LogPrintf("%s: misbehaving peer: headers message size = %u", __func__, nCount);
             return error("headers message size = %u", nCount);
         }
         headers.resize(nCount);
@@ -6233,6 +6240,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             CValidationState state;
             if (pindexLast != NULL && header.hashPrevBlock != pindexLast->GetBlockHash()) {
                 Misbehaving(pfrom->GetId(), 20);
+                LogPrintf("%s: misbehaving peer: non-continuous headers sequence", __func__);
                 return error("non-continuous headers sequence");
             }
 
@@ -6441,6 +6449,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 // This isn't a Misbehaving(100) (immediate ban) because the
                 // peer might be an older or different implementation with
                 // a different signature key, etc.
+                LogPrintf("%s %i: misbehaving peer: DoS Penalty", __func__, __LINE__);
                 Misbehaving(pfrom->GetId(), 10);
             }
         }
@@ -6451,6 +6460,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                  strCommand == "filteradd" ||
                  strCommand == "filterclear")) {
         LogPrintf("bloom message=%s\n", strCommand);
+        LogPrintf("%s %i: misbehaving peer: bloom message=%s", __func__, __LINE__, strCommand);
         Misbehaving(pfrom->GetId(), 100);
     }
 
@@ -6460,6 +6470,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
         if (!filter.IsWithinSizeConstraints())
             // There is no excuse for sending a too-large filter
+            LogPrintf("%s %i: misbehaving peer: too large filter", __func__, __LINE__);
             Misbehaving(pfrom->GetId(), 100);
         else {
             LOCK(pfrom->cs_filter);
@@ -6478,6 +6489,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Nodes must NEVER send a data item > 520 bytes (the max size for a script data object,
         // and thus, the maximum size any matched object can have) in a filteradd message
         if (vData.size() > MAX_SCRIPT_ELEMENT_SIZE) {
+            LogPrintf("%s %i: misbehaving peer: vData.size(): %i > MAX_SCRIPT_ELEMENT_SIZE %i", __func__, __LINE__, vData.size(), MAX_SCRIPT_ELEMENT_SIZE);
             Misbehaving(pfrom->GetId(), 100);
         } else {
             LOCK(pfrom->cs_filter);
