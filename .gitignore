@@ -6,13 +6,13 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/akencash
-src/akencashd
-src/akencash-cli
-src/akencash-tx
-src/test/test_akencash
-src/qt/test/test_akencash-qt
-src/bench/bench_akencash
+src/mnpcoin
+src/mnpcoind
+src/mnpcoin-cli
+src/mnpcoin-tx
+src/test/test_mnpcoin
+src/qt/test/test_mnpcoin-qt
+src/bench/bench_mnpcoin
 
 # autoreconf
 Makefile.in
@@ -35,13 +35,13 @@ config.log
 config.status
 configure
 libtool
-src/config/akencash-config.h
-src/config/akencash-config.h.in
+src/config/mnpcoin-config.h
+src/config/mnpcoin-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
 
-src/univalue/gen
+#src/univalue/gen
 
 src/qt/*.moc
 src/qt/moc_*.cpp
@@ -62,7 +62,7 @@ libconftest.dylib*
 *.o
 *.o-*
 #*.patch
-.akencash
+.mnpcoin
 *.a
 *.pb.cc
 *.pb.h
@@ -84,7 +84,7 @@ libconftest.dylib*
 
 # Unit-tests
 Makefile.test
-akencash-qt_test
+mnpcoin-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -98,7 +98,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_akencash.coverage/
+test_mnpcoin.coverage/
 total.coverage/
 coverage_percent.txt
 
