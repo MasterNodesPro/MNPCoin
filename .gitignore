@@ -61,7 +61,7 @@ libconftest.dylib*
 *.pyc
 *.o
 *.o-*
-*.patch
+#*.patch
 .akencash
 *.a
 *.pb.cc
@@ -80,9 +80,7 @@ libconftest.dylib*
 
 # Compilation and Qt preprocessor part
 *.qm
-Makefile
-akencash-qt
-Akencash-Qt.app
+# Makefile
 
 # Unit-tests
 Makefile.test

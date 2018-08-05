@@ -100,6 +100,7 @@ BITCOIN_CORE_H = \
   checkpoints.h \
   checkqueue.h \
   clientversion.h \
+  config/mnpcoin-config.h \
   coincontrol.h \
   coins.h \
   compat.h \
