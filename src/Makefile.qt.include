@@ -188,7 +188,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/zpivcontroldialog.h
+  qt/zmnpcontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
