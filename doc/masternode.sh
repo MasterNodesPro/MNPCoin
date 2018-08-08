@@ -135,10 +135,9 @@ masternodeprivkey='$key'
 
 # Download binaries for Linux
 mkdir mnpcoin
+wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.0.0/linux_x64.tar.gz -O mnpcoin-v1.0.0.tar.gz
+tar xzvf mnpcoin-v1.0.0.tar.gz -C mnpcoin
 cd mnpcoin
-wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.0.0/linux_x64.tar.gz
-tar xzvf linux_x64.tar.gz mnpcoin
-cd mnpcoin/bin
 # Give permissions, move to bin folder and run
 chmod +x mnpcoind
 chmod +x mnpcoin-cli
