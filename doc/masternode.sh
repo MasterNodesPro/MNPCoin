@@ -36,7 +36,7 @@ if [[ "$key" == "" ]]; then
     echo "WARNING: No private key entered, exiting!!!"
     echo && exit
 fi
-read -e -p "VPS Server IP Address and Masternode Port like IP:11010 : " ip
+read -e -p "VPS Server IP Address and Masternode RPC Port like IP:11000 : " ip
 echo && echo "Pressing ENTER will use the default value for the next prompts."
 echo && sleep 3
 read -e -p "Add swap space? (Recommended) [Y/n] : " add_swap
@@ -71,13 +71,13 @@ fi
 # Update system
 echo && echo "Upgrading system and install initial dependencies"
 sleep 3
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt -y update
+sudo apt -y upgrade
 
 # Install required packages
 echo && echo "Installing base packages..."
 sleep 3
-sudo apt-get -y install \
+sudo apt -y install \
 build-essential \
 libtool \
 autotools-dev \
@@ -105,7 +105,7 @@ python-virtualenv
 if [[ ("$install_fail2ban" == "y" || "$install_fail2ban" == "Y" || "$install_fail2ban" == "") ]]; then
     echo && echo "Installing fail2ban..."
     sleep 3
-    sudo apt-get -y install fail2ban
+    sudo apt -y install fail2ban
     sudo service fail2ban restart
 fi
 
