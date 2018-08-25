@@ -55,23 +55,36 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
                 // MNPCoinDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
-                (       0, uint256("000008da52778c83303c1ece6630d1299e40de5a21c0fea72c23e44a92b02206"));          // First PoW premine block
+                (       0, uint256("000008da52778c83303c1ece6630d1299e40de5a21c0fea72c23e44a92b02206"))
+                (       500, uint256("000000002701c3dd7c19922b439f46251bf833a17399f2ed69163a770133eb50"))
+                (       1000, uint256("00000008cbfeecba65fb88418589b005ac61a547e476a94bb01c3a631eda6c0f"))
+                (       1500, uint256("0000001019b4b2253074058565f8f9e31c0b94318bb0d52239f3edcddd48ec72"))
+                (       2000, uint256("00000011364c5d5c1ea354aadf88d1017c08bd4c0f472e1588c45b591a67061a"))
+                (       2500, uint256("000000002ef29cba83fe8952038110b1c3d44e7a6f91bf3ff62716bccce10401"))
+                (       5000, uint256("0000000004171709af65c3576f9f3b2347b9a78f35466a4c0e67f4b58083a593"))
+                (       10000, uint256("7de29e948c54311b863c0d56eeab828f207dc33f77fe5906ae5d0b6411d84283"))
+                (       15000, uint256("3c86cc64a9fa649d75b32d588485cc127594fd107fca91f8dab0c0442ba3ef7e"))
+                (       20000, uint256("e045aee2480f2a5be795035cb3c380f16d504c1690ca50694df5f9ff3752e62d"))
+                (       25000, uint256("d6a4a25ed9c6448fd4cf16120ce1a773ede4734e6c14fc2829e40550eb4534c7"))
+                (       30000, uint256("b99cb0b836152bd3fc52565e0e79162ac125e57d6641534a0e070fd76c8e036e"))
+                ;          // First PoW premine block
 
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1533088800, // * UNIX timestamp of last checkpoint block
-        0,       // * total number of transactions between genesis and last checkpoint
+        1535017606, // * UNIX timestamp of last checkpoint block
+        52892,       // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         2000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-                (       0, uint256("00000924036c67d803ce606ded8143127e62fa2111dd3b063880a1067c69ccb1"));        // First PoW block
+                (       0, uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"))
+        ;        // First PoW block
 static const Checkpoints::CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,
-        1529903701,
-        0,
+        1533332213,
+        1,
         300};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
@@ -310,6 +323,8 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("149.28.82.70", "149.28.82.70"));
+        vSeeds.push_back(CDNSSeedData("149.28.248.6", "149.28.248.6"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 88); // Testnet mnpcoin addresses start with 'w'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 112);  // Testnet mnpcoin script addresses start with '7'
