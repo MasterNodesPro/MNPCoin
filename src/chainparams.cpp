@@ -79,7 +79,7 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-                (       0, uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"))
+                (       0, uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"))
         ;        // First PoW block
 static const Checkpoints::CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,
@@ -120,7 +120,7 @@ public:
         pchMessageStart[1] = 0x2d;
         pchMessageStart[2] = 0x61;
         pchMessageStart[3] = 0xfd;
-        vAlertPubKey = ParseHex("0491b95b901ecde7f3cb46c0072b435874b652287a107896939d27af0d81c83e0c763da214f8eaf2a33015ef9e2f916b639e90276b950a0bcf5a56f3ff27ce6376");
+        vAlertPubKey = ParseHex("040f75a949d4536e16b53ff978b877583806892f7535c44030c4f589effd49836213224590108598004b8846adec0825b787cb64c56e3beacbcb7716877e4322e2");
         nDefaultPort = 13371;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // MNPCoin starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;       // Halving interval
@@ -228,7 +228,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0402bd6bf848f988d75789e122e5cb4d08f7e83a7b5202307bd20c90c35e90c0053dd11ad0c8a57601592f3796aebdd31eb0579f0b6ecda454ce513dc07fd71df1";
+        strSporkKey = "044a30edfb288d8973761070dc8b456d429c7b8872d475a837e09e71d3b710c08055852a50de199ee04c0643ebb4bce1c52a27c63cec13c62cf2f84eda00d8a3a6";
         strObfuscationPoolDummyAddress = "DNw1Qz26zMtELShYCLmkE4VXE4ELyD7i8u";
         nStartMasternodePayments = 1533088800; // GMT: 2018-08-01T02:00:00.000Z
 
@@ -270,7 +270,7 @@ public:
         pchMessageStart[1] = 0x9e;
         pchMessageStart[2] = 0xd1;
         pchMessageStart[3] = 0x99;
-        vAlertPubKey = ParseHex("040d3ae1afb816d00e953bc3941b962cac0d311a0dae9f1ae9088fc6ad7f646916cdf462b896d57ea8e3fe37c52422f4592e52d346da33214299dd6908062697c3");
+        vAlertPubKey = ParseHex("04dad852aab0fe56b56189f910eba2d8b76bf233493374e9dbbb33eeb8e48dec45b7e772f6017d5d0b9d3278b6a804323f2db0bc786164a553ed727dda0b5108be");
         nDefaultPort = 13376;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
@@ -278,7 +278,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // MNPCoin: 1 day
         nTargetSpacing = 1 * 60;  // MNPCoin: 2 minutes
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 150;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
@@ -292,11 +292,11 @@ public:
         nBlockEnforceInvalidUTXO = 1600; //Start enforcing the invalid UTXO's
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1533088801;  // GMT: 2018-08-01T02:00:01.000Z
-        genesis.nNonce = 82445768;
+        genesis.nTime = 1535229300;  // GMT: 2018-08-25T20:35:00.000Z
+        genesis.nNonce = 83001552;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"))
+        if(genesis.GetHash() != uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -319,7 +319,7 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"));
+        assert(hashGenesisBlock == uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -347,7 +347,7 @@ public:
 
         // we enable for test purpose low dif mining on main
         nPoolMaxTransactions = 2;
-        strSporkKey = "04063b9e1223fb5d0ac37a876542b17b81025c9e065753bffaf60c7ebd73e3eea9f7014838945fe7765815bcb41ae50c7c3c7deb00b30c8fa8756a7d02e6c97246";
+        strSporkKey = "0435f3871b668f1abba8b8ed01a881e3b211464cd8609a6c59adc92a9aa8c333a03a16ae17bcb583e8aa601d3cb6d662513a7c6d668ec88a397d0b1d22ae9c3954";
         strObfuscationPoolDummyAddress = "TMPUBzcsHZawA32XYYDF9FHQp6icv492CV";
         nStartMasternodePayments = 1529903701;  // GMT: 2018-06-09T00:00:00Z
     }
