@@ -80,7 +80,7 @@ libconftest.dylib*
 
 # Compilation and Qt preprocessor part
 *.qm
-# Makefile
+Makefile
 
 # Unit-tests
 Makefile.test

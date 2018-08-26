@@ -2122,12 +2122,12 @@ int64_t GetBlockValue(int nHeight)
         if (nHeight == 0) {
             return 0 * COIN;
         } else if (nHeight == 1) {
-            return 500000 * COIN;
-        } else if (nHeight < 200 && nHeight > 1) {
+            return 1000000 * COIN;
+        } else if (nHeight < 100 && nHeight > 1) {
             return 5000 * COIN;
-        } else if (nHeight >= 200 && nHeight <= Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
+        } else if (nHeight >= 100 && nHeight <= Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
             return 500 * COIN;
-        } else if (nHeight >= 500 && nHeight > Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
+        } else if (nHeight >= 150 && nHeight > Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
             return 50 * COIN;
         } else {
             return 0 * COIN;
@@ -2159,7 +2159,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
     int64_t ret = 0;
 
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200)
+        if (nHeight <= Params().LAST_POW_BLOCK())
             return 0;
     }
 
