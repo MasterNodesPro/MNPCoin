@@ -677,7 +677,7 @@
                        <item row="4" column="0">
                         <widget class="QLabel" name="labelLockedBalanceText">
                          <property name="toolTip">
-                          <string>Locked MNP or Masternode collaterals. These are excluded from zMNP minting.</string>
+                          <string>Locked MNP or Masternode collaterals.</string>
                          </property>
                          <property name="text">
                           <string>Locked:</string>
@@ -696,7 +696,7 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Locked MNP or Masternode collaterals. These are excluded from zMNP minting.</string>
+                          <string>Locked MNP or Masternode collaterals.</string>
                          </property>
                          <property name="text">
                           <string notr="true">0.000 000 00 MNP</string>
@@ -740,7 +740,7 @@
                           <string>Total:</string>
                          </property>
                          <property name="toolTip">
-                          <string>Your current Wagerr balance, unconfirmed and immature transactions included</string>
+                          <string>Your current MNPCoin balance, unconfirmed and immature transactions included</string>
                          </property>
                         </widget>
                        </item>
@@ -756,7 +756,7 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Your current Wagerr balance, unconfirmed and immature transactions included</string>
+                          <string>Your current MNPCoin balance, unconfirmed and immature transactions included</string>
                          </property>
                          <property name="text">
                           <string notr="true">0.000 000 00 MNP</string>
