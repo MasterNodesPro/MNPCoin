@@ -327,6 +327,8 @@ public:
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("149.28.82.70", "149.28.82.70"));
         vSeeds.push_back(CDNSSeedData("149.28.248.6", "149.28.248.6"));
+        vSeeds.push_back(CDNSSeedData("144.202.17.23", "144.202.17.23"));
+        vSeeds.push_back(CDNSSeedData("45.32.210.33", "45.32.210.33"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 88); // Testnet mnpcoin addresses start with 'w'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 112);  // Testnet mnpcoin script addresses start with '7'
