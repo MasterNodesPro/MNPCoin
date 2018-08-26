@@ -18,7 +18,7 @@ const std::string CLIENT_NAME("MNPCoin Core");
 /**
  * Client version number
  */
-#define CLIENT_VERSION_SUFFIX "POW"
+#define CLIENT_VERSION_SUFFIX "Release"
 
 
 /**
