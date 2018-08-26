@@ -40,10 +40,9 @@ chmod +x mnpcoin-tx
 chmod +x mnpcoin-qt
 
 echo && echo "moving to /usr/bin"
-sudo mv mnpcoin-cli /usr/bin/mnpcoin-cli
-sudo mv mnpcoin-tx /usr/bin/mnpcoin-tx
-sudo mv mnpcoind /usr/bin/mnpcoind
-sudo mv mnpcoin-qt /usr/bin/mnpcoin-qt
+sudo mv mnpcoin-cli /usr/local/bin/mnpcoin-cli
+sudo mv mnpcoin-tx /usr/local/bin/mnpcoin-tx
+sudo mv mnpcoind /usr/local/bin/mnpcoind
 
 echo && echo "cleaning up"
 cd ~/
