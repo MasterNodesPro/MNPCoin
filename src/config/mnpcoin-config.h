@@ -220,7 +220,7 @@
 #define HAVE_PTHREAD_PRIO_INHERIT 1
 
 /* Define to 1 to enable trading dialog */
-/* #undef HAVE_QT5 */
+#define HAVE_QT5 1
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
@@ -308,7 +308,7 @@
 #define STRERROR_R_CHAR_P 1
 
 /* Define if dbus support should be compiled in */
-/* #undef USE_DBUS */
+#define USE_DBUS 1
 
 /* Define if QR support should be compiled in */
 /* #undef USE_QRCODE */

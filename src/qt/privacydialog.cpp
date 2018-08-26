@@ -298,16 +298,16 @@ void PrivacyDialog::on_pushButtonSpendzMNP_clicked()
     sendzMNP();
 }
 
-void PrivacyDialog::on_pushButtonZPivControl_clicked()
+void PrivacyDialog::on_pushButtonZMnpControl_clicked()
 {
-    ZMnpControlDialog* zPivControl = new ZMnpControlDialog(this);
-    zPivControl->setModel(walletModel);
-    zPivControl->exec();
+    ZMnpControlDialog* zMnpControl = new ZMnpControlDialog(this);
+    zMnpControl->setModel(walletModel);
+    zMnpControl->exec();
 }
 
-void PrivacyDialog::setZPivControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZMnpControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzPivSelected_int->setText(QString::number(nAmount));
+    ui->labelzMnpSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -413,7 +413,7 @@ void PrivacyDialog::sendzMNP()
     ui->TEMintStatus->setPlainText(tr("Spending Zerocoin.\nComputationally expensive, might need several minutes depending on the selected Security Level and your hardware. \nPlease be patient..."));
     ui->TEMintStatus->repaint();
 
-    // use mints from zPiv selector if applicable
+    // use mints from zMnp selector if applicable
     vector<CZerocoinMint> vMintsSelected;
     if (!ZMnpControlDialog::listSelectedMints.empty()) {
         vMintsSelected = ZMnpControlDialog::GetSelectedMints();
@@ -471,7 +471,7 @@ void PrivacyDialog::sendzMNP()
     CAmount nValueIn = 0;
     int nCount = 0;
     for (CZerocoinSpend spend : receipt.GetSpends()) {
-        strStats += tr("zPiv Spend #: ") + QString::number(nCount) + ", ";
+        strStats += tr("zMnp Spend #: ") + QString::number(nCount) + ", ";
         strStats += tr("denomination: ") + QString::number(spend.GetDenomination()) + ", ";
         strStats += tr("serial: ") + spend.GetSerial().ToString().c_str() + "\n";
         strStats += tr("Spend is 1 of : ") + QString::number(spend.GetMintCount()) + " mints in the accumulator\n";
@@ -480,13 +480,13 @@ void PrivacyDialog::sendzMNP()
 
     CAmount nValueOut = 0;
     for (const CTxOut& txout: wtxNew.vout) {
-        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " Piv, ";
+        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " Mnp, ";
         nValueOut += txout.nValue;
 
         strStats += tr("address: ");
         CTxDestination dest;
         if(txout.scriptPubKey.IsZerocoinMint())
-            strStats += tr("zPiv Mint");
+            strStats += tr("zMnp Mint");
         else if(ExtractDestination(txout.scriptPubKey, dest))
             strStats += tr(CBitcoinAddress(dest).ToString().c_str());
         strStats += "\n";
