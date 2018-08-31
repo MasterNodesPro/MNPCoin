@@ -2,11 +2,15 @@
 
 now=$(date +"%m_%d_%Y")
 
+
+
 # Check if is root
 if [ "$(whoami)" != "root" ]; then
   echo "Script must be run as user: root"
   exit -1
 fi
+
+apt install unzip
 
 echo && echo "going to root directory"
 cd ~/
@@ -23,7 +27,7 @@ mkdir $now
 
 backuppath=~/mnpcoinbackup/$now
 
-echo && echo "backing up wallet.dat masternode.conf mnpcoin.conf to $(backuppath)"
+echo && echo "backing up wallet.dat masternode.conf mnpcoin.conf to ${backuppath}"
 cd ../.mnpcoin
 cp wallet.dat $backuppath
 cp masternode.conf $backuppath
