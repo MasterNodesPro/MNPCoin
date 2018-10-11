@@ -143,7 +143,7 @@ public:
         nZerocoinStartHeight = 9900000;         // DISABLED FOR NOW TODO Zerocoin start height
         nZerocoinStartTime = 1546300800;        // Saturday, Jan 1, 2019 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1;           // Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 100000; // Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 10000000; // Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1110;           // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
         nBlockLastGoodCheckpoint = 1001;        // Last valid accumulator checkpoint (currently we do not have any) *** TODO ***
         nBlockEnforceInvalidUTXO = 1110;        // Start enforcing the invalid UTXO's
