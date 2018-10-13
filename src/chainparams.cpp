@@ -54,7 +54,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-                // MNPCoinDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
+                // MNPCoinDevs - RELEASE CHANGE - Checkpoints, timestamp of last checkpoint, total nr. of transactions
                 (       0, uint256("000008da52778c83303c1ece6630d1299e40de5a21c0fea72c23e44a92b02206"))
                 (       500, uint256("000000002701c3dd7c19922b439f46251bf833a17399f2ed69163a770133eb50"))
                 (       1000, uint256("00000008cbfeecba65fb88418589b005ac61a547e476a94bb01c3a631eda6c0f"))
@@ -69,12 +69,19 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
                 (       20000, uint256("e045aee2480f2a5be795035cb3c380f16d504c1690ca50694df5f9ff3752e62d"))
                 (       25000, uint256("d6a4a25ed9c6448fd4cf16120ce1a773ede4734e6c14fc2829e40550eb4534c7"))
                 (       30000, uint256("b99cb0b836152bd3fc52565e0e79162ac125e57d6641534a0e070fd76c8e036e"))
-                ;          // First PoW premine block
+                (       40000, uint256("e36b01f14b1c7761eeef3c1b21b5292261196f42e76d08d23c3a361882a14946"))
+                (       50000, uint256("d79ad638259f3837ab25769130a518238ef9b6b20653d98df96e602fd1c8ee98"))
+                (       60000, uint256("fc525d56bb1a724b8ac52f7b8b91e1bbc60fe541e37ed2743f99cfe5d1770e4c"))
+                (       70000, uint256("d48e8b10fcf64eaa3edc5f873370be16c86ab639f4cd13df2fab9c9e8a1d0742"))
+                (       80000, uint256("49fb6da4cbc4e834312985bfa44b08537a4c4573bbca6a37626b46e66ea246d6"))
+                (       90000, uint256("4035ca075e6a5759d15edd9494fd925da415baec9058dd04664b119f7a319fe9"))
+                (       100000, uint256("0d593545ea7f76f3012d131da70b449218b24a0eaf88db661149b08589f8b925"))
+                ;
 
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1535017606, // * UNIX timestamp of last checkpoint block
-        52892,       // * total number of transactions between genesis and last checkpoint
+        1539232472, // * UNIX timestamp of last checkpoint block
+        194131,       // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         2000        // * estimated number of transactions per day after checkpoint
 };
@@ -141,9 +148,9 @@ public:
         nLastPOWBlock = 8000;                  //
         nModifierUpdateBlock = 1100;            // Modify block on height
         nZerocoinStartHeight = 9900000;         // DISABLED FOR NOW TODO Zerocoin start height
-        nZerocoinStartTime = 1546300800;        // Saturday, Jan 1, 2019 00:00:00 AM (GMT)
+        nZerocoinStartTime = 1609459200;        // Jan 1, 2021 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1;           // Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 100000; // Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 10000000; // Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1110;           // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
         nBlockLastGoodCheckpoint = 1001;        // Last valid accumulator checkpoint (currently we do not have any) *** TODO ***
         nBlockEnforceInvalidUTXO = 1110;        // Start enforcing the invalid UTXO's
