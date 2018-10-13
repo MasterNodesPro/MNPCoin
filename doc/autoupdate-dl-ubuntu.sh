@@ -8,7 +8,7 @@ if [ "$(whoami)" != "root" ]; then
   exit -1
 fi
 
-apt install unzip
+apt install libzmq3-dev -y
 
 echo && echo "going to root directory"
 cd ~/
@@ -34,7 +34,8 @@ cp mnpcoin.conf $backuppath
 cd ~/
 
 echo && echo "unzipping daemons"
-tar zxvf -C ~/mnpcoin-release
+mkdir mnpcoin-release
+tar zxvf mnpcoin-v1.2.0.tar.gz -C ~/mnpcoin-release
 cd mnpcoin-release
 chmod +x mnpcoind
 chmod +x mnpcoin-cli
