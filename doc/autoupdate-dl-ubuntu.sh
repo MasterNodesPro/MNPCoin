@@ -2,8 +2,6 @@
 
 now=$(date +"%m_%d_%Y")
 
-
-
 # Check if is root
 if [ "$(whoami)" != "root" ]; then
   echo "Script must be run as user: root"
@@ -19,10 +17,10 @@ echo && echo "Stopping daemon..."
 mnpcoin-cli stop
 
 echo && echo "downloading update"
-wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.1.0/mnpcoin-linux-ubuntu1604-v1.1.0.zip -O mnpcoin-v1.1.0.zip
+wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.2.0/mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -O mnpcoin-v1.2.0.tar.gz
 
-mkdir mnpcoinbackup
-cd mnpcoinbackup
+mkdir mnpcoinbackup && cd $_
+
 mkdir $now
 
 backuppath=~/mnpcoinbackup/$now
@@ -36,12 +34,11 @@ cp mnpcoin.conf $backuppath
 cd ~/
 
 echo && echo "unzipping daemons"
-unzip mnpcoin-v1.1.0.zip -d ~/mnpcoin-release
+tar zxvf -C ~/mnpcoin-release
 cd mnpcoin-release
 chmod +x mnpcoind
 chmod +x mnpcoin-cli
 chmod +x mnpcoin-tx
-chmod +x mnpcoin-qt
 
 echo && echo "moving to /usr/bin"
 sudo mv mnpcoin-cli /usr/local/bin/mnpcoin-cli
@@ -51,7 +48,7 @@ sudo mv mnpcoind /usr/local/bin/mnpcoind
 echo && echo "cleaning up"
 cd ~/
 rm mnpcoin-release -rf
-rm mnpcoin-v1.1.0.zip
+rm mnpcoin-v1.2.0.tar.gz
 
 echo && echo "starting daemon"
 mnpcoind
