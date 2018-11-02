@@ -135,7 +135,7 @@ masternodeprivkey='$key'
 
 # Download binaries for Linux
 mkdir mnpcoin
-wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.2.0/mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -O mnpcoin-v1.1.0.zip
+wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.2.0/mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -O mnpcoin-1.2.0-ubuntu-no-gui.tar.gz
 #unzip mnpcoin-v1.1.0.zip -D mnpcoin
 tar xzvf mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -C mnpcoin
 cd mnpcoin
