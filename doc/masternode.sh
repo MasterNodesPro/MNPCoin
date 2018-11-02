@@ -135,9 +135,9 @@ masternodeprivkey='$key'
 
 # Download binaries for Linux
 mkdir mnpcoin
-wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.1.0/mnpcoin-linux-ubuntu1604-v1.1.0.zip -O mnpcoin-v1.1.0.zip
-unzip mnpcoin-v1.1.0.zip -D mnpcoin
-#tar xzvf mnpcoin-v1.0.0.tar.gz -C mnpcoin
+wget https://github.com/MasterNodesPro/MNPCoin/releases/download/v1.2.0/mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -O mnpcoin-v1.1.0.zip
+#unzip mnpcoin-v1.1.0.zip -D mnpcoin
+tar xzvf mnpcoin-1.2.0-ubuntu-no-gui.tar.gz -C mnpcoin
 cd mnpcoin
 # Give permissions, move to bin folder and run
 chmod +x mnpcoind
