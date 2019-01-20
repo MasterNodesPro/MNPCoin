@@ -6,8 +6,8 @@ Website: https://mnpcoin.pro
 
 Utility: https://masternodes.pro
 
-#### 01-13-19
----- __Spork Protocol Update Enforced  Feb 1, 2019__
+#### 01-19-19
+
 - Implemented BIP130
 - Removed Zerocoin options from transaction dropdown.
 - Updated Copyright dates and minor cleanup of code.
