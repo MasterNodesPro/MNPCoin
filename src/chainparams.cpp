@@ -302,10 +302,10 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1547942400;  // GMT: 2019-01-20T00:00:00.000Z
-        genesis.nNonce = 83001552;
+        genesis.nNonce = 83435947;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("x"))
+        if(genesis.GetHash() != uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -328,14 +328,15 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("x"));
+        assert(hashGenesisBlock == uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("149.28.82.70", "149.28.82.70"));
-        vSeeds.push_back(CDNSSeedData("149.28.248.6", "149.28.248.6"));
-        vSeeds.push_back(CDNSSeedData("144.202.17.23", "144.202.17.23"));
-        vSeeds.push_back(CDNSSeedData("45.32.210.33", "45.32.210.33"));
+        vSeeds.push_back(CDNSSeedData("199.223.253.96", "199.223.253.96"));
+        vSeeds.push_back(CDNSSeedData("104.238.179.224", "104.238.179.224"));
+        vSeeds.push_back(CDNSSeedData("45.76.63.197", "45.76.63.197"));
+        vSeeds.push_back(CDNSSeedData("45.76.253.208", "45.76.253.208"));
+        vSeeds.push_back(CDNSSeedData("24.35.240.224", "24.35.240.224"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 88); // Testnet mnpcoin addresses start with 'w'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 112);  // Testnet mnpcoin script addresses start with '7'
