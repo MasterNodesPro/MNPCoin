@@ -301,11 +301,11 @@ public:
         nBlockEnforceInvalidUTXO = 1600; //Start enforcing the invalid UTXO's
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1535229300;  // GMT: 2018-08-25T20:35:00.000Z
+        genesis.nTime = 1547942400;  // GMT: 2019-01-20T00:00:00.000Z
         genesis.nNonce = 83001552;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"))
+        if(genesis.GetHash() != uint256("x"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -328,7 +328,7 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"));
+        assert(hashGenesisBlock == uint256("x"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
