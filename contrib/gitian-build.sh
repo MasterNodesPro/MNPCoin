@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/mnpcoin/mnpcoin
+url=https://github.com/MasterNodesPro/MNPCoin
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the mnpcoin, gitian-builder, gitian.sigs, and mnpcoin-detached-sigs.
+Run this script from the directory containing the MNPCoin, gitian-builder, gitian.sigs, and MNPCoin-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/mnpcoin/mnpcoin
+-u|--url	Specify the URL of the repository. Default is $url
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -237,8 +237,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/mnpcoin/gitian.sigs.git
-    git clone https://github.com/mnpcoin/mnpcoin-detached-sigs.git
+    git clone https://github.com/MasterNodesPro/gitian.sigs.git
+    git clone https://github.com/MasterNodesPro/MNPCoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -252,7 +252,7 @@ then
 fi
 
 # Set up build
-pushd ./mnpcoin
+pushd ./MNPCoin
 git fetch
 git checkout ${COMMIT}
 popd
@@ -261,7 +261,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./mnpcoin-binaries/${VERSION}
+	mkdir -p ./MNPCoin-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -271,7 +271,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../mnpcoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../MNPCoin/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -279,9 +279,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit mnpcoin=${COMMIT} --url mnpcoin=${url} ../mnpcoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/mnpcoin-*.tar.gz build/out/src/mnpcoin-*.tar.gz ../mnpcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit MNPCoin=${COMMIT} --url MNPCoin=${url} ../MNPCoin/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/MNPCoin-*.tar.gz build/out/src/MNPCoin-*.tar.gz ../MNPCoin-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -289,10 +289,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit mnpcoin=${COMMIT} --url mnpcoin=${url} ../mnpcoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/mnpcoin-*-win-unsigned.tar.gz inputs/mnpcoin-win-unsigned.tar.gz
-	    mv build/out/mnpcoin-*.zip build/out/mnpcoin-*.exe ../mnpcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit MNPCoin=${COMMIT} --url MNPCoin=${url} ../MNPCoin/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/MNPCoin-*-win-unsigned.tar.gz inputs/MNPCoin-win-unsigned.tar.gz
+	    mv build/out/MNPCoin-*.zip build/out/MNPCoin-*.exe ../MNPCoin-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -300,10 +300,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit mnpcoin=${COMMIT} --url mnpcoin=${url} ../mnpcoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/mnpcoin-*-osx-unsigned.tar.gz inputs/mnpcoin-osx-unsigned.tar.gz
-	    mv build/out/mnpcoin-*.tar.gz build/out/mnpcoin-*.dmg ../mnpcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit MNPCoinn=${COMMIT} --url MNPCoin=${url} ../MNPCoin/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/MNPCoin-*-osx-unsigned.tar.gz inputs/MNPCoin-osx-unsigned.tar.gz
+	    mv build/out/MNPCoin-*.tar.gz build/out/MNPCoin-*.dmg ../MNPCoin-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -311,9 +311,9 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit mnpcoin=${COMMIT} --url mnpcoin=${url} ../mnpcoin/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/mnpcoin-*.tar.gz build/out/src/mnpcoin-*.tar.gz ../mnpcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit MNPCoin=${COMMIT} --url MNPCoin=${url} ../MNPCoin/contrib/gitian-descriptors/gitian-aarch64.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/MNPCoin-*.tar.gz build/out/src/MNPCoin-*.tar.gz ../MNPCoin-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
@@ -340,32 +340,32 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../mnpcoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../MNPCoin/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../mnpcoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../MNPCoin/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../mnpcoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../MNPCoin/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
 	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../mnpcoin/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../MNPCoin/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../mnpcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../MNPCoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../mnpcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../MNPCoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -380,10 +380,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../mnpcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/mnpcoin-*win64-setup.exe ../mnpcoin-binaries/${VERSION}
-	    mv build/out/mnpcoin-*win32-setup.exe ../mnpcoin-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../MNPCoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/MNPCoin-*win64-setup.exe ../MNPCoin-binaries/${VERSION}
+	    mv build/out/MNPCoin-*win32-setup.exe ../MNPCoin-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -391,9 +391,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../mnpcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../mnpcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/mnpcoin-osx-signed.dmg ../mnpcoin-binaries/${VERSION}/mnpcoin-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../MNPCoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../MNPCoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/MNPCoin-osx-signed.dmg ../MNPCoin-binaries/${VERSION}/MNPCoin-${VERSION}-osx.dmg
 	fi
 	popd
 

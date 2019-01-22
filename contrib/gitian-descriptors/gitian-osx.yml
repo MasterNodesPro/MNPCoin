@@ -1,5 +1,5 @@
 ---
-name: "mnpcoin-osx-3.1"
+name: "MNPCoin-osx-3.1"
 enable_cache: true
 suites:
 - "xenial"
@@ -28,8 +28,8 @@ packages:
 - "python-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/mnpcoin/mnpcoin.git"
-  "dir": "mnpcoin"
+- "url": "https://github.com/MasterNodesPro/MNPCoin.git"
+  "dir": "MNPCoin"
 files:
 - "MacOSX10.11.sdk.tar.gz"
 script: |
