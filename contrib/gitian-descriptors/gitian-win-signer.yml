@@ -1,5 +1,5 @@
 ---
-name: "mnpcoin-win-signer"
+name: "MNPCoin-win-signer"
 suites:
 - "xenial"
 architectures:
@@ -8,12 +8,12 @@ packages:
 - "libssl-dev"
 - "autoconf"
 remotes:
-- "url": "https://github.com/mnpcoin/mnpcoin-detached-sigs.git"
+- "url": "https://github.com/MasterNodesPro/MNPCoin-detached-sigs.git"
   "dir": "signature"
 files:
 - "osslsigncode-1.7.1.tar.gz"
 - "osslsigncode-Backports-to-1.7.1.patch"
-- "mnpcoin-win-unsigned.tar.gz"
+- "MNPCoin-win-unsigned.tar.gz"
 script: |
   BUILD_DIR=`pwd`
   SIGDIR=${BUILD_DIR}/signature/win

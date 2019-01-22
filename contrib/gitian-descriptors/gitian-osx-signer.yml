@@ -1,5 +1,5 @@
 ---
-name: "mnpcoin-dmg-signer"
+name: "MNPCoin-dmg-signer"
 suites:
 - "xenial"
 architectures:
@@ -7,10 +7,10 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/mnpcoin/mnpcoin-detached-sigs.git"
+- "url": "https://github.com/MasterNodesPro/mnpcoin-detached-sigs.git"
   "dir": "signature"
 files:
-- "mnpcoin-osx-unsigned.tar.gz"
+- "MNPCoin-osx-unsigned.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
