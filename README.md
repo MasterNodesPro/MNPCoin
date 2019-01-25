@@ -6,6 +6,9 @@ Website: https://mnpcoin.pro
 
 Utility: https://masternodes.pro
 
+#### 01-24-19
+- Implemented fix for "fake staking" bug
+
 #### 01-19-19
 
 - Implemented BIP130
