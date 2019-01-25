@@ -4598,7 +4598,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         if(!coins.HaveInputs(block.vtx[1])){
             // the inputs are spent at the chain tip so we should look at the recently spent outputs
 
-            for(CTxIN in : block.vtx[1].vin){
+            for(CTxIn in : block.vtx[1].vin){
                 auto it = mapStakeSpent.find(in.prevout);
                 if(it == mapStakeSpent.end()){
                     return false;
