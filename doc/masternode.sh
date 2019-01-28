@@ -32,7 +32,7 @@ usage() {
  Options:
   -s, -setup    Setup your masternode for the first time
   -u, -update   Update your masternode to the newest scripts
-  -h, -help     Your Reading This
+  -h, -help     You're Reading This
 "
 }
 
