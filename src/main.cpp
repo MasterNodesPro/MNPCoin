@@ -4788,7 +4788,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                               return state.DoS(100, error("%s: stake zerocoinspend not ready to be spent", __func__));
                           }
 
-                          Accumulator accumulator(Params().Zerocoin_Params(chainActive.Height() < Params().Zerocoin_Block_V2_Start()),
+                          Accumulator accumulator(Params().Zerocoin_Params(chainActive.Height() < Params().Zerocoin_StartHeight()),
                                                   spend.getDenomination(), bnAccumulatorValue);
 
                           // Check that the coinspend is valid
