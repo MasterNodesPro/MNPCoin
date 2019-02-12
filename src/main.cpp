@@ -4754,48 +4754,48 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                   splitHeight = prev->nHeight;
 
                   // Now that this loop if completed. Check if we have zMNP inputs.
-                  if(hasZMNPInputs){
-
-                      for (CTxIn zMnpInput : zMNPInputs) {
-                          CoinSpend spend = TxInToZerocoinSpend(zMnpInput);
-
-                          // First check if the serials were not already spent on the forked blocks.
-                          CBigNum coinSerial = spend.getCoinSerialNumber();
-                          for(CBigNum serial : vBlockSerials){
-                              if(serial == coinSerial){
-                                  return state.DoS(100, error("%s: serial double spent on fork", __func__));
-                              }
-                          }
-                          // Now check if the serial exists before the chain split.
-                          int nHeightTx = 0;
-                          if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx)){
-                              // if the height is nHeightTx > chainSplit means that the spent occurred after the chain split
-                              if(nHeightTx <= splitHeight){
-                                  return state.DoS(100, error("%s: serial double spent on main chain", __func__));
-                              }
-                          }
-
-                          // if (!ContextualCheckZerocoinSpendNoSerialCheck(stakeTxIn, spend, pindex, 0))
-                          //   return state.DoS(100,error("%s: ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                          //                          stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zmnp");
-
-                          // Now only the ZKP left..
-                          // As the spend maturity is 200, the acc value must be accumulated, otherwise it's not ready to be spent
-                          CBigNum bnAccumulatorValue = 0;
-                          if (!zerocoinDB->ReadAccumulatorValue(spend.getAccumulatorChecksum(), bnAccumulatorValue)) {
-                              return state.DoS(100, error("%s: stake zerocoinspend not ready to be spent", __func__));
-                          }
-
-                          Accumulator accumulator(Params().Zerocoin_Params(chainActive.Height() < Params().Zerocoin_StartHeight()),
-                                                  spend.getDenomination(), bnAccumulatorValue);
-
-                          // Check that the coinspend is valid
-                          if(!spend.Verify(accumulator))
-                              return state.DoS(100, error("%s: zerocoin spend did not verify", __func__));
-
-                      } // zMNPInputs loop
-
-                    } // hasZMNPInputs
+                  // if(hasZMNPInputs){
+                  //
+                  //     for (CTxIn zMnpInput : zMNPInputs) {
+                  //         CoinSpend spend = TxInToZerocoinSpend(zMnpInput);
+                  //
+                  //         // First check if the serials were not already spent on the forked blocks.
+                  //         CBigNum coinSerial = spend.getCoinSerialNumber();
+                  //         for(CBigNum serial : vBlockSerials){
+                  //             if(serial == coinSerial){
+                  //                 return state.DoS(100, error("%s: serial double spent on fork", __func__));
+                  //             }
+                  //         }
+                  //         // Now check if the serial exists before the chain split.
+                  //         int nHeightTx = 0;
+                  //         if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx)){
+                  //             // if the height is nHeightTx > chainSplit means that the spent occurred after the chain split
+                  //             if(nHeightTx <= splitHeight){
+                  //                 return state.DoS(100, error("%s: serial double spent on main chain", __func__));
+                  //             }
+                  //         }
+                  //
+                  //         // if (!ContextualCheckZerocoinSpendNoSerialCheck(stakeTxIn, spend, pindex, 0))
+                  //         //   return state.DoS(100,error("%s: ContextualCheckZerocoinSpend failed for tx %s", __func__,
+                  //         //                          stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zmnp");
+                  //
+                  //         // Now only the ZKP left..
+                  //         // As the spend maturity is 200, the acc value must be accumulated, otherwise it's not ready to be spent
+                  //         CBigNum bnAccumulatorValue = 0;
+                  //         if (!zerocoinDB->ReadAccumulatorValue(spend.getAccumulatorChecksum(), bnAccumulatorValue)) {
+                  //             return state.DoS(100, error("%s: stake zerocoinspend not ready to be spent", __func__));
+                  //         }
+                  //
+                  //         Accumulator accumulator(Params().Zerocoin_Params(chainActive.Height() < Params().Zerocoin_StartHeight()),
+                  //                                 spend.getDenomination(), bnAccumulatorValue);
+                  //
+                  //         // Check that the coinspend is valid
+                  //         if(!spend.Verify(accumulator))
+                  //             return state.DoS(100, error("%s: zerocoin spend did not verify", __func__));
+                  //
+                  //     } // zMNPInputs loop
+                  //
+                  //   } // hasZMNPInputs
 
                   } // isBlockFromFork
 
