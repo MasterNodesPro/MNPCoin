@@ -4646,7 +4646,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
     int nHeight = pindex->nHeight;
     int splitHeight = -1;
 
-    if(IsSporkActive(SPORK_17_FAKE_STAKE_FIX) && block.GetBlockTime() >= GetSporkValue(SPORK_17_FAKE_STAKE_FIX)) {
+    //if(IsSporkActive(SPORK_17_FAKE_STAKE_FIX) && block.GetBlockTime() >= GetSporkValue(SPORK_17_FAKE_STAKE_FIX)) {
 
         if (block.IsProofOfStake()) {
             LOCK(cs_main);
@@ -4820,7 +4820,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                       }
                   }
         } // isPoS
-    } // SPORK_17_FAKE_STAKE_FIX
+    //} // SPORK_17_FAKE_STAKE_FIX
 
     // Write block to history file
     try {
