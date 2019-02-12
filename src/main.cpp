@@ -4422,9 +4422,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
     if (block.nBits != nBitsRequired)
         return error("%s : incorrect proof of work at %d", __func__, pindexPrev->nHeight + 1);
 
-    bool isPoS = false;
     if (block.IsProofOfStake()) {
-        isPoS = true;
         uint256 hashProofOfStake;
         uint256 hash = block.GetHash();
 
@@ -4650,7 +4648,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
     if(IsSporkActive(SPORK_17_FAKE_STAKE_FIX) && block.GetBlockTime() >= GetSporkValue(SPORK_17_FAKE_STAKE_FIX)) {
 
-        if (isPoS) {
+        if (block.IsProofOfStake()) {
             LOCK(cs_main);
 
             // Blocks arrives in order, so if prev block is not the tip then we are on a fork.
