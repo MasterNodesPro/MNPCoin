@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PACKAGE='mnpcoin-v1.2.2.tar.gz'
-VERSION='v1.2.2'
+PACKAGE='mnpcoin-v1.2.3.tar.gz'
+VERSION='v1.2.3'
 
 system_motd() {
     clear
@@ -21,7 +21,7 @@ system_motd() {
     echo "            ██║ ╚═╝ ██║██║ ╚═██║██║     ╚██████╗╚██████╔╝██║██║ ╚═██║               "
     echo "            ╚═╝     ╚═╝╚═╝   ╚═╝╚═╝      ╚═════╝ ╚═════╝ ╚═╝╚═╝   ╚═╝               "
     echo ""
-    echo "Updated: 1/27/2019 By: MNP_Jason"
+    echo "Updated: 2/12/2019 By: MNP_Jason"
     echo && echo && echo
     sleep 2
 }
