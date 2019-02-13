@@ -27,7 +27,7 @@ using namespace boost;
     Sporks 11,12, and 16 to be removed with 1st zerocoin release
 */
 #define SPORK_START 10001
-#define SPORK_END 10015
+#define SPORK_END 10016
 
 #define SPORK_2_SWIFTTX 10001
 #define SPORK_3_SWIFTTX_BLOCK_FILTERING 10002
@@ -56,7 +56,7 @@ using namespace boost;
 #define SPORK_14_NEW_PROTOCOL_ENFORCEMENT_DEFAULT 4070908800      //OFF
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //OFF
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF
-#define SPORK_17_FAKE_STAKE_FIX_DEFAULT 4070908800     //OFF
+#define SPORK_17_FAKE_STAKE_FIX_DEFAULT 4070908800                //OFF
 
 class CSporkMessage;
 class CSporkManager;
