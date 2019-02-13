@@ -1,5 +1,5 @@
 ---
-name: "mnpcoin-linux-3.1"
+name: "MNPCoin-linux-3.1"
 enable_cache: true
 suites:
 - "trusty"
@@ -24,8 +24,8 @@ packages:
 - "libc6-dev:i386"
 reference_datetime: "2015-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/mnpcoin/mnpcoin.git"
-  "dir": "mnpcoin"
+- "url": "https://github.com/MasterNodesPro/MNPCoin.git"
+  "dir": "MNPCoin"
 multiarch:
 - "i386"
 files: []

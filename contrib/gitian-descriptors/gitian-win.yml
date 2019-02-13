@@ -1,5 +1,5 @@
 ---
-name: "mnpcoin-win-3.1"
+name: "MNPCoin-win-3.1"
 enable_cache: true
 suites:
 - "xenial"
@@ -22,8 +22,8 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/mnpcoin/mnpcoin.git"
-  "dir": "mnpcoin"
+- "url": "https://github.com/MasterNodesPro/MNPCoin.git"
+  "dir": "MNPCoin"
 files: []
 script: |
   WRAP_DIR=$HOME/wrapped

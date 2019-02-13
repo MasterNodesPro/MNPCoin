@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The MNPCoin developers
+// Copyright (c) 2018-2019 The MNPCoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -54,24 +54,54 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-                // MNPCoinDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
-                (       0, uint256("000008da52778c83303c1ece6630d1299e40de5a21c0fea72c23e44a92b02206"));          // First PoW premine block
+                // MNPCoinDevs - RELEASE CHANGE - Checkpoints, timestamp of last checkpoint, total nr. of transactions
+                (       0, uint256("000008da52778c83303c1ece6630d1299e40de5a21c0fea72c23e44a92b02206"))
+                (       500, uint256("000000002701c3dd7c19922b439f46251bf833a17399f2ed69163a770133eb50"))
+                (       1000, uint256("00000008cbfeecba65fb88418589b005ac61a547e476a94bb01c3a631eda6c0f"))
+                (       1500, uint256("0000001019b4b2253074058565f8f9e31c0b94318bb0d52239f3edcddd48ec72"))
+                (       2000, uint256("00000011364c5d5c1ea354aadf88d1017c08bd4c0f472e1588c45b591a67061a"))
+                (       2500, uint256("000000002ef29cba83fe8952038110b1c3d44e7a6f91bf3ff62716bccce10401"))
+                (       5000, uint256("0000000004171709af65c3576f9f3b2347b9a78f35466a4c0e67f4b58083a593"))
+                (       8000, uint256("00000000019a2a9feb99a9ed49e84ab5108436cb45e80b1115f2e4334b46d306"))
+                (       8001, uint256("5f85b090993ab18290c2d24cbdeec4c5eb0732d0bf9c87efd92f59aa8e552bfe"))
+                (       10000, uint256("7de29e948c54311b863c0d56eeab828f207dc33f77fe5906ae5d0b6411d84283"))
+                (       15000, uint256("3c86cc64a9fa649d75b32d588485cc127594fd107fca91f8dab0c0442ba3ef7e"))
+                (       20000, uint256("e045aee2480f2a5be795035cb3c380f16d504c1690ca50694df5f9ff3752e62d"))
+                (       25000, uint256("d6a4a25ed9c6448fd4cf16120ce1a773ede4734e6c14fc2829e40550eb4534c7"))
+                (       30000, uint256("b99cb0b836152bd3fc52565e0e79162ac125e57d6641534a0e070fd76c8e036e"))
+                (       40000, uint256("e36b01f14b1c7761eeef3c1b21b5292261196f42e76d08d23c3a361882a14946"))
+                (       50000, uint256("d79ad638259f3837ab25769130a518238ef9b6b20653d98df96e602fd1c8ee98"))
+                (       60000, uint256("fc525d56bb1a724b8ac52f7b8b91e1bbc60fe541e37ed2743f99cfe5d1770e4c"))
+                (       70000, uint256("d48e8b10fcf64eaa3edc5f873370be16c86ab639f4cd13df2fab9c9e8a1d0742"))
+                (       80000, uint256("49fb6da4cbc4e834312985bfa44b08537a4c4573bbca6a37626b46e66ea246d6"))
+                (       90000, uint256("4035ca075e6a5759d15edd9494fd925da415baec9058dd04664b119f7a319fe9"))
+                (       100000, uint256("0d593545ea7f76f3012d131da70b449218b24a0eaf88db661149b08589f8b925"))
+                (       120000, uint256("da0954bd8915e44d2c6406bbd82a4e302b7f6620e457f73044a88897b418710e"))
+                (       140000, uint256("669330f0b31e937d0ce0fc18f05de4eced1da84456bd5d72e34ba6ee69ff0d25"))
+                (       160000, uint256("af8612d5c1c0beebd5cd168127dc6f27a025d4f9fdfedf8bca48551c144e9da1"))
+                (       180000, uint256("ae972cd58079c9a26d5d68b8375ab2bf3e93789bddf2c3c1e48f4bd08bdd2565"))
+                (       200000, uint256("b8f878e27bfee6eb63911ca0d85aa8c9c9666e4512dd8682b83d67d679f0b5c8"))
+                (       220000, uint256("6d55a17c276ab12b14b6b8d13fb33e733613b25c600c220a457ed6a054c137cf"))
+                (       240000, uint256("85469fe3a2b8130e163f1e0b1c324c405dc84f91a62d001de1cdbf465f056dcd"))
+                (       248000, uint256("b7934ead9db1c2444e591060d46dfcbf1330ccba04524d1b46ef164b991adc9d"))
+                ;
 
 static const Checkpoints::CCheckpointData data = {
         &mapCheckpoints,
-        1533088800, // * UNIX timestamp of last checkpoint block
-        0,       // * total number of transactions between genesis and last checkpoint
+        1548362685, // * UNIX timestamp of last checkpoint block
+        506447,       // * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         2000        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-                (       0, uint256("00000924036c67d803ce606ded8143127e62fa2111dd3b063880a1067c69ccb1"));        // First PoW block
+                (       0, uint256("00000c8d8a5dc8021a5d70eef326b71fd05360747169cfb4bd7ce7095c812139"))
+        ;        // First PoW block
 static const Checkpoints::CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,
-        1529903701,
-        0,
+        1533332213,
+        1,
         300};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
@@ -107,7 +137,7 @@ public:
         pchMessageStart[1] = 0x2d;
         pchMessageStart[2] = 0x61;
         pchMessageStart[3] = 0xfd;
-        vAlertPubKey = ParseHex("0491b95b901ecde7f3cb46c0072b435874b652287a107896939d27af0d81c83e0c763da214f8eaf2a33015ef9e2f916b639e90276b950a0bcf5a56f3ff27ce6376");
+        vAlertPubKey = ParseHex("040f75a949d4536e16b53ff978b877583806892f7535c44030c4f589effd49836213224590108598004b8846adec0825b787cb64c56e3beacbcb7716877e4322e2");
         nDefaultPort = 13371;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // MNPCoin starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;       // Halving interval
@@ -126,9 +156,9 @@ public:
         nLastPOWBlock = 8000;                  //
         nModifierUpdateBlock = 1100;            // Modify block on height
         nZerocoinStartHeight = 9900000;         // DISABLED FOR NOW TODO Zerocoin start height
-        nZerocoinStartTime = 1546300800;        // Saturday, Jan 1, 2019 00:00:00 AM (GMT)
+        nZerocoinStartTime = 1609459200;        // Jan 1, 2021 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1;           // Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 100000; // Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 10000000; // Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1110;           // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
         nBlockLastGoodCheckpoint = 1001;        // Last valid accumulator checkpoint (currently we do not have any) *** TODO ***
         nBlockEnforceInvalidUTXO = 1110;        // Start enforcing the invalid UTXO's
@@ -212,10 +242,10 @@ public:
         fMineBlocksOnDemand = false;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
-        fHeadersFirstSyncingActive = false;
+
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0402bd6bf848f988d75789e122e5cb4d08f7e83a7b5202307bd20c90c35e90c0053dd11ad0c8a57601592f3796aebdd31eb0579f0b6ecda454ce513dc07fd71df1";
+        strSporkKey = "044a30edfb288d8973761070dc8b456d429c7b8872d475a837e09e71d3b710c08055852a50de199ee04c0643ebb4bce1c52a27c63cec13c62cf2f84eda00d8a3a6";
         strObfuscationPoolDummyAddress = "DNw1Qz26zMtELShYCLmkE4VXE4ELyD7i8u";
         nStartMasternodePayments = 1533088800; // GMT: 2018-08-01T02:00:00.000Z
 
@@ -257,7 +287,7 @@ public:
         pchMessageStart[1] = 0x9e;
         pchMessageStart[2] = 0xd1;
         pchMessageStart[3] = 0x99;
-        vAlertPubKey = ParseHex("040d3ae1afb816d00e953bc3941b962cac0d311a0dae9f1ae9088fc6ad7f646916cdf462b896d57ea8e3fe37c52422f4592e52d346da33214299dd6908062697c3");
+        vAlertPubKey = ParseHex("04dad852aab0fe56b56189f910eba2d8b76bf233493374e9dbbb33eeb8e48dec45b7e772f6017d5d0b9d3278b6a804323f2db0bc786164a553ed727dda0b5108be");
         nDefaultPort = 13376;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
@@ -265,13 +295,13 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // MNPCoin: 1 day
         nTargetSpacing = 1 * 60;  // MNPCoin: 2 minutes
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 150;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 1000000000 * COIN;
-        nZerocoinStartHeight = 250;
-        nZerocoinStartTime = 1546300800; // Saturday, Jan 1, 2019 00:00:00 AM (GMT)
+        nZerocoinStartHeight = 25000000;
+        nZerocoinStartTime = 2082758400; // Jan 1, 2036 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = 1500; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 891737; //First block that bad serials emerged (currently we do not have any) *** TODO ***
@@ -279,11 +309,11 @@ public:
         nBlockEnforceInvalidUTXO = 1600; //Start enforcing the invalid UTXO's
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1533088801;  // GMT: 2018-08-01T02:00:01.000Z
-        genesis.nNonce = 82445768;
+        genesis.nTime = 1547942400;  // GMT: 2019-01-20T00:00:00.000Z
+        genesis.nNonce = 83435947;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"))
+        if(genesis.GetHash() != uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -306,10 +336,15 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("00000b2627cbc331ad361f07f93f27072a48b6128d1931c178b65f11d990827d"));
+        assert(hashGenesisBlock == uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("199.223.253.96", "199.223.253.96"));
+        vSeeds.push_back(CDNSSeedData("104.238.179.224", "104.238.179.224"));
+        vSeeds.push_back(CDNSSeedData("45.76.63.197", "45.76.63.197"));
+        vSeeds.push_back(CDNSSeedData("45.76.253.208", "45.76.253.208"));
+        vSeeds.push_back(CDNSSeedData("24.35.240.224", "24.35.240.224"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 88); // Testnet mnpcoin addresses start with 'w'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 112);  // Testnet mnpcoin script addresses start with '7'
@@ -332,7 +367,7 @@ public:
 
         // we enable for test purpose low dif mining on main
         nPoolMaxTransactions = 2;
-        strSporkKey = "04063b9e1223fb5d0ac37a876542b17b81025c9e065753bffaf60c7ebd73e3eea9f7014838945fe7765815bcb41ae50c7c3c7deb00b30c8fa8756a7d02e6c97246";
+        strSporkKey = "0435f3871b668f1abba8b8ed01a881e3b211464cd8609a6c59adc92a9aa8c333a03a16ae17bcb583e8aa601d3cb6d662513a7c6d668ec88a397d0b1d22ae9c3954";
         strObfuscationPoolDummyAddress = "TMPUBzcsHZawA32XYYDF9FHQp6icv492CV";
         nStartMasternodePayments = 1529903701;  // GMT: 2018-06-09T00:00:00Z
     }
