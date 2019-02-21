@@ -7,7 +7,7 @@ Website: https://mnpcoin.pro
 Utility: https://masternodes.pro
 
 #### 02-21-19 V1.2.4
-- Removed BIP130 as it was causing Blockchain Bandwidth issues @MNPJason
+- Remove BIP130 as it was causing a bandwidth issue with local wallets and hosted nodes @MNPJason
 - Update masternode.sh file @MNPJason
 
 #### 02-13-19 V1.2.3
