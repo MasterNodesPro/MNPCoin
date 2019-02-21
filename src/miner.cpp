@@ -585,7 +585,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             while (chainActive.Tip()->nTime < 1471482000 || vNodes.empty() || pwallet->IsLocked() || !fMintableCoins || 
                    nReserveBalance >= pwallet->GetBalance() || !masternodeSync.IsSynced()) {
                 nLastCoinStakeSearchInterval = 0;
-                LogPrint("miner", "MNPCoinMiner wait 5 seconds (%u, %d, %d, %d)\n", vNodes.size(), pwallet->IsLocked(), fMintableCoins, masternodeSync.IsBlockchainSynced());
+//                LogPrint("miner", "MNPCoinMiner wait 5 seconds (%u, %d, %d, %d)\n", vNodes.size(), pwallet->IsLocked(), fMintableCoins, masternodeSync.IsBlockchainSynced());
                 MilliSleep(5000);
                 if (!fGenerateBitcoins && !fProofOfStake)
                     continue;
@@ -595,7 +595,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             {
                 if (GetTime() - mapHashedBlocks[chainActive.Tip()->nHeight] < max(pwallet->nHashInterval, (unsigned int)1)) // wait half of the nHashDrift with max wait of 3 minutes
                 {
-                    LogPrint("miner", "MNPCoinMiner wait half of the nHashDrift\n");
+//                    LogPrint("miner", "MNPCoinMiner wait half of the nHashDrift\n");
                     MilliSleep(5000);
                     continue;
                 }
