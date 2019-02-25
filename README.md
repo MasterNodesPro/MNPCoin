@@ -7,7 +7,9 @@ Website: https://mnpcoin.pro
 Utility: https://masternodes.pro
 
 #### 02-21-19 V1.2.5
-
+- Update checkpoints @MNPJason
+- Remove lingering BIP130 Code @MNPJason
+- Update Version to v1.2.5 @MNPJason
 - Update masternode.sh file @MNPJason
 
 
