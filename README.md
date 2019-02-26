@@ -1,10 +1,17 @@
 MNPCOIN Core
 =====================================
-Version: V1.2.4
+Version: V1.2.5
 
 Website: https://mnpcoin.pro
 
 Utility: https://masternodes.pro
+
+#### 02-21-19 V1.2.5
+- Update checkpoints @MNPJason
+- Remove lingering BIP130 Code @MNPJason
+- Update Version to v1.2.5 @MNPJason
+- Update masternode.sh file @MNPJason
+
 
 #### 02-21-19 V1.2.4
 - Remove BIP130 as it was causing a bandwidth issue with local wallets and hosted nodes @MNPJason

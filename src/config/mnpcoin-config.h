@@ -21,7 +21,7 @@
 #define CLIENT_VERSION_MINOR 2
 
 /* Build revision */
-#define CLIENT_VERSION_REVISION 4
+#define CLIENT_VERSION_REVISION 5
 
 /* Version is release */
 #define COPYRIGHT_YEAR 2019
@@ -274,7 +274,7 @@
 #define PACKAGE_NAME "MNPCoin Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "MNPCoin Core 1.2.4"
+#define PACKAGE_STRING "MNPCoin Core 1.2.5"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "mnpcoin"
@@ -283,7 +283,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.2.4"
+#define PACKAGE_VERSION "1.2.5"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
