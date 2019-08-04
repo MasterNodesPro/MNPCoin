@@ -2200,19 +2200,51 @@ int64_t GetBlockValue(int nHeight)
     if (Params().NetworkID() == CBaseChainParams::REGTEST || Params().NetworkID() == CBaseChainParams::TESTNET) {
         if (nHeight == 0) {
             return 0 * COIN;
-        } else if (nHeight == 1) {
-            return 1000000 * COIN;
-        } else if (nHeight < 100 && nHeight > 1) {
-            return 5000 * COIN;
-        } else if (nHeight >= 100 && nHeight <= Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
-            return 500 * COIN;
-        } else if (nHeight >= 150 && nHeight > Params().LAST_POW_BLOCK()) { // check for last PoW block is not required, it does not harm to leave it *** TODO ***
-            return 50 * COIN;
+        } else if (nHeight > 1 && nHeight <= 20) {
+            return 150000 * COIN;
+        } else if (nHeight > 20 && nHeight <= Params().LAST_POW_BLOCK()) {
+            return 25 * COIN;
+        } else if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= 1439) { // hard set a height here because then it wouldnt validate
+            // to mimic mainnet and test block reduction in matter of weeks instead of years.
+            return 10 * COIN;
         } else {
-            return 0 * COIN;
+            nSubsidy = 10 * COIN;
+        }
+
+
+        if( nHeight >= Params().Governance_Start_Height() && IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
+            int blocksPerMilestone = 60 * 24 * 3; // minutes * hours * days
+            // reductions will happen every 3 days
+
+            nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // take 10% off the top for superblock
+
+            if (nHeight > blocksPerMilestone * 2) // 50% reduction
+                nSubsidy = int64_t(nSubsidy * .5);
+            if (nHeight > blocksPerMilestone * 3) // 40% reduction
+                nSubsidy = int64_t(nSubsidy * .4);
+            if (nHeight > blocksPerMilestone * 4) // 30% reduction
+                nSubsidy = int64_t(nSubsidy * .3);
+            if (nHeight > blocksPerMilestone * 5) // 20% reduction
+                nSubsidy = int64_t(nSubsidy * .2);
+            if (nHeight > blocksPerMilestone * 6) // 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > blocksPerMilestone * 7) // 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > blocksPerMilestone * 8) // 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > blocksPerMilestone * 9) // fixed at 1 mnp per block
+                nSubsidy = 1 * COIN;
+            if (nHeight > 9460800) { // 20th week
+                if (nHeight <= 10183574)
+                    nSubsidy = 1 * COIN;
+                else if (nHeight == 10183575)
+                    nSubsidy = int64_t(1.49 * COIN); // one odd ball mint to balance out the supply.
+                else
+                    nSubsidy = 2 * COIN;
+            }
         }
     } else {
-    //////////////// MAINNET ////////////////
+        //////////////// MAIN NET ////////////////
         if (nHeight == 0) {
             // Genesis block
             nSubsidy = 0 * COIN;
@@ -2223,10 +2255,36 @@ int64_t GetBlockValue(int nHeight)
         } else if (nHeight > Params().LAST_POW_BLOCK()) {
             nSubsidy = 10 * COIN;                       // Standard reward of 10 MNPCoin per block
         }
-    }
 
-    if(nHeight >= 525600){
-        nSubsidy /= 2; // halving the block mint after 1 year.
+        if( nHeight >= Params().Governance_Start_Height() && IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
+            // after 1st year this code will run (above block 525600)
+            nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // subtract 10% for superblock
+            // reductions are compounding every year
+            if (nHeight > 525600) // 2nd year 50% reduction
+                nSubsidy = int64_t(nSubsidy * .5);
+            if (nHeight > 1051200) // 3rd year 40% reduction
+                nSubsidy = int64_t(nSubsidy * .4);
+            if (nHeight > 1576800) // 4th year 30% reduction
+                nSubsidy = int64_t(nSubsidy * .3);
+            if (nHeight > 2102400) // 5th year 20% reduction
+                nSubsidy = int64_t(nSubsidy * .2);
+            if (nHeight > 2628000) // 6th year 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > 3153600) // 7th year 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > 3679200) // 8th year 10% reduction
+                nSubsidy = int64_t(nSubsidy * .1);
+            if (nHeight > 4204800) // 9th - 19th year fixed at 1 mnp per block
+                nSubsidy = 1 * COIN;
+            if (nHeight > 9460800) { // 20th year
+                if (nHeight <= 10183574)
+                    nSubsidy = 1 * COIN;
+                else if (nHeight == 10183575)
+                    nSubsidy = int64_t(1.49 * COIN); // one odd ball mint to balance out the supply.
+                else
+                    nSubsidy = 2 * COIN;
+            }
+        }
     }
 
     return nSubsidy;
@@ -3282,7 +3340,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
     CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight);
-    if (block.IsProofOfWork())
+    // enable paying fees to miners instead of burning them once governance is enabled.
+    if (block.IsProofOfWork() || pindex->nHeight >= Params().Governance_Start_Height())
         nExpectedMint += nFees;
 
     if (!IsBlockValueValid(block, nExpectedMint, pindex->nMint)) {

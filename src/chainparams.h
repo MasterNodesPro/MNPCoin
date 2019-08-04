@@ -118,6 +118,11 @@ public:
     int Zerocoin_StartTime() const { return nZerocoinStartTime; }
     int Block_Enforce_Invalid() const { return nBlockEnforceInvalidUTXO; }
 
+    // Governance/Superblock
+    int Governance_Start_Height() const { return nGovernanceStartHeight; }
+    int Super_Block_Spacing() const { return nSuperBlockSpacing; }
+    int Proposal_Fee() const { return nProposalFee; }
+
 protected:
     CChainParams() {}
 
@@ -175,6 +180,11 @@ protected:
     int nBlockFirstFraudulent;
     int nBlockLastGoodCheckpoint;
     int nBlockEnforceInvalidUTXO;
+
+    // governance
+    int nGovernanceStartHeight; // starting height of governance/superblocks
+    int nSuperBlockSpacing; // amount of blocks between superblocks
+    int nProposalFee; // fee required to submit a proposal
 };
 
 /**
