@@ -153,7 +153,7 @@ public:
         nTargetSpacing = 1 * 60;                // MNPCoin: 1 minutes
         nMaturity = 25;                         // Block maturity
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 100000000 * COIN;        // Large number effectively unlimited. Will deprecate TODO
+        nMaxMoneyOut = 22000000 * COIN;        // Max supply
         nMasternodeCollateral = 10000;          // Masternode Collateral requirement
         /** Height or Time Based Activations **/
         nLastPOWBlock = 8000;                  //
@@ -165,6 +165,11 @@ public:
         nBlockFirstFraudulent = 1110;           // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
         nBlockLastGoodCheckpoint = 1001;        // Last valid accumulator checkpoint (currently we do not have any) *** TODO ***
         nBlockEnforceInvalidUTXO = 1110;        // Start enforcing the invalid UTXO's
+
+        // Governance
+        nProposalFee = 25;
+        nGovernanceStartHeight = 525600;
+        nSuperBlockSpacing = 60 * 24 * 30 * 2; // minutes * hours * days * months = 86400
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -298,25 +303,29 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // MNPCoin: 1 day
         nTargetSpacing = 1 * 60;  // MNPCoin: 2 minutes
-        nLastPOWBlock = 150;
+        nLastPOWBlock = 700;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
-        nMaxMoneyOut = 1000000000 * COIN;
+        nMaxMoneyOut = 22000000 * COIN;
         nZerocoinStartHeight = 25000000;
         nZerocoinStartTime = 2082758400; // Jan 1, 2036 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 1500; //Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 25000000; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 891737; //First block that bad serials emerged (currently we do not have any) *** TODO ***
         nBlockLastGoodCheckpoint = 1001; //Last valid accumulator checkpoint (currently we do not have any) *** TODO ***
         nBlockEnforceInvalidUTXO = 1600; //Start enforcing the invalid UTXO's
+        // Governance
+        nProposalFee = 25;
+        nGovernanceStartHeight = nLastPOWBlock + 20; // 2 hours after POW ends
+        nSuperBlockSpacing = (60 * 24) / 5; // (minutes * hours) / 5 = 5 times per day = every 288 blocks
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1547942400;  // GMT: 2019-01-20T00:00:00.000Z
-        genesis.nNonce = 83435947;
+        genesis.nTime = 1561248000;  // 2019-06-23T00:00:00.000Z
+        genesis.nNonce = 86005283;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"))
+        if(genesis.GetHash() != uint256("000004f60101df02887312654522afbd9867eebfc03b27c4401bc3365c752c3f"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -339,7 +348,7 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("00000bcb79d73d227ed5d0daf1d9f25b64b09978a14261c6b1a6318a1d80a4ef"));
+        assert(hashGenesisBlock == uint256("000004f60101df02887312654522afbd9867eebfc03b27c4401bc3365c752c3f"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
