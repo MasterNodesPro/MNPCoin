@@ -2211,12 +2211,9 @@ int64_t GetBlockValue(int nHeight)
             nSubsidy = 10 * COIN;
         }
 
-
         if( nHeight >= Params().Governance_Start_Height() && IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
             int blocksPerMilestone = 60 * 24 * 3; // minutes * hours * days
             // reductions will happen every 3 days
-
-            nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // take 10% off the top for superblock
 
             if (nHeight > blocksPerMilestone * 2) // 50% reduction
                 nSubsidy = int64_t(nSubsidy * .5);
@@ -2242,6 +2239,7 @@ int64_t GetBlockValue(int nHeight)
                 else
                     nSubsidy = 2 * COIN;
             }
+            nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // take 10% off the top for superblock
         }
     } else {
         //////////////// MAIN NET ////////////////
@@ -2256,9 +2254,9 @@ int64_t GetBlockValue(int nHeight)
             nSubsidy = 10 * COIN;                       // Standard reward of 10 MNPCoin per block
         }
 
-        if( nHeight >= Params().Governance_Start_Height() && IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
+        if( nHeight >= Params().Governance_Start_Height()) {
             // after 1st year this code will run (above block 525600)
-            nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // subtract 10% for superblock
+
             // reductions are compounding every year
             if (nHeight > 525600) // 2nd year 50% reduction
                 nSubsidy = int64_t(nSubsidy * .5);
@@ -2284,7 +2282,11 @@ int64_t GetBlockValue(int nHeight)
                 else
                     nSubsidy = 2 * COIN;
             }
+        } else {
+            if(nHeight > 525600)
+                nSubsidy /= 2;
         }
+        nSubsidy = int64_t(nSubsidy - (nSubsidy * .1)); // subtract 10% for superblock
     }
 
     return nSubsidy;
