@@ -159,7 +159,7 @@ public:
         nLastPOWBlock = 8000;                  //
         nModifierUpdateBlock = 1100;            // Modify block on height
         nZerocoinStartHeight = 9900000;         // DISABLED FOR NOW TODO Zerocoin start height
-        nZerocoinStartTime = 1609459200;        // Jan 1, 2021 00:00:00 AM (GMT)
+        nZerocoinStartTime = 1924992000;        // Jan 1, 2031 00:00:00 AM (GMT)
         nBlockEnforceSerialRange = 1;           // Enforce serial range starting this block
         nBlockRecalculateAccumulators = 10000000; // Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1110;           // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
@@ -169,7 +169,7 @@ public:
         // Governance
         nProposalFee = 25;
         nGovernanceStartHeight = 525600;
-        nSuperBlockSpacing = 60 * 24 * 30 * 2; // minutes * hours * days * months = 86400
+        nSuperBlockSpacing = 60 * 24 * 30 * 2; // minutes * hours * days * months = 86400 -- every 2 months
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -301,9 +301,9 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // MNPCoin: 1 day
-        nTargetSpacing = 1 * 60;  // MNPCoin: 2 minutes
-        nLastPOWBlock = 700;
+        nTargetTimespan = 1 * 60;
+        nTargetSpacing = 1 * 60;
+        nLastPOWBlock = 300;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 1; //approx Mon, 17 Apr 2017 04:00:00 GMT
@@ -318,14 +318,14 @@ public:
         // Governance
         nProposalFee = 25;
         nGovernanceStartHeight = nLastPOWBlock + 20; // 2 hours after POW ends
-        nSuperBlockSpacing = (60 * 24) / 5; // (minutes * hours) / 5 = 5 times per day = every 288 blocks
+        nSuperBlockSpacing = (60 * 24) / 2; // (minutes * hours) / 2 = 2 times per day = every 720 blocks
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1561248000;  // 2019-06-23T00:00:00.000Z
-        genesis.nNonce = 86005283;
+        genesis.nTime = 1565550000;  // 2019-08-11T17:00:00.000Z
+        genesis.nNonce = 91818883;
 
         hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("000004f60101df02887312654522afbd9867eebfc03b27c4401bc3365c752c3f"))
+        if(genesis.GetHash() != uint256("00000049b953d40a4d69edf19e9f0667993bc9949a65fe648cc75338396ba777"))
         {
             printf("Searching for genesis block...\n");
             uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
@@ -348,7 +348,7 @@ public:
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
             printf("block.hashMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
         }
-        assert(hashGenesisBlock == uint256("000004f60101df02887312654522afbd9867eebfc03b27c4401bc3365c752c3f"));
+        assert(hashGenesisBlock == uint256("00000049b953d40a4d69edf19e9f0667993bc9949a65fe648cc75338396ba777"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
