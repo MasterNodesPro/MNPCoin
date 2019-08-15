@@ -14,6 +14,7 @@
 #include "net.h"
 #include "sync.h"
 #include "util.h"
+#include "chainparams.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -31,7 +32,7 @@ class CTxBudgetPayment;
 #define VOTE_YES 1
 #define VOTE_NO 2
 
-static const CAmount PROPOSAL_FEE_TX = (50 * COIN);
+static const CAmount PROPOSAL_FEE_TX = (Params().Proposal_Fee() * COIN);
 static const CAmount BUDGET_FEE_TX = (50 * COIN);
 static const int64_t BUDGET_VOTE_UPDATE_MIN = 60 * 60;
 
@@ -495,6 +496,8 @@ public:
         return (nTime < GetTime() - (60 * 5));
     }
 
+    bool IsPassing(const CBlockIndex* pindexPrev, int nBlockStartBudget, int nBlockEndBudget, int mnCount);
+
     std::string GetName() { return strProposalName; }
     std::string GetURL() { return strURL; }
     int GetBlockStart() { return nBlockStart; }
@@ -506,9 +509,9 @@ public:
     int GetBlockCurrentCycle();
     int GetBlockEndCycle();
     double GetRatio();
-    int GetYeas();
-    int GetNays();
-    int GetAbstains();
+    int GetYeas() const;
+    int GetNays() const;
+    int GetAbstains() const;
     CAmount GetAmount() { return nAmount; }
     void SetAllotted(CAmount nAllotedIn) { nAlloted = nAllotedIn; }
     CAmount GetAllotted() { return nAlloted; }
